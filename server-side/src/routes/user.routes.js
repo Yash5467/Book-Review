@@ -2,7 +2,8 @@
 import { Router } from "express";
 
 // Importing user authentication controller functions
-import { userLogin, userSignup } from "../controllers/user.controller.js";
+import { userLogin, userSignup, userVerifyLogin } from "../controllers/user.controller.js";
+import { verifyJWT } from "../middilewares/verifyJWT.middileware.js";
 
 // Creating a new instance of the Router
 export const userRouter = Router();
@@ -12,3 +13,6 @@ userRouter.route("/signup").post(userSignup);
 
 // Route to handle user login, using the userLogin controller function
 userRouter.route("/login").post(userLogin);
+
+// Route to handle user verification , using the userVerify controller function 
+userRouter.route("/verify").get(verifyJWT, userVerifyLogin);

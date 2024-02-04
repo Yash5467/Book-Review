@@ -76,3 +76,10 @@ res.status(200)
 
 
 });
+
+
+
+export const userVerifyLogin=(req,res)=>{
+  
+  res.status(200).json(req.user);
+}
