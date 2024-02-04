@@ -15,7 +15,9 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
 
     // Extracting the accessToken from the cookies in the request.
     const { accessToken } = req.cookies;
-
+    
+    //Checking Token is Availabel or not 
+   if(!accessToken) throw new ApiError(401,"Unauthorized Access");
     // Decrypting the user information from the accessToken using the secret key.
     const decryptUser = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
 

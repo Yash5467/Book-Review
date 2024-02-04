@@ -29,7 +29,7 @@ export const userSignup=asyncHandler(async(req,res)=>{
     fullName: fullName,
     email: email,
     password: password
-  }).select("-password -refreshToken");
+  });
 
   // If there's an issue while creating the user, throw an error
   if (!user) throw new ApiError(500, "Error While Creating User");
@@ -81,5 +81,16 @@ res.status(200)
 
 export const userVerifyLogin=(req,res)=>{
   
-  res.status(200).json(req.user);
+  res.status(200).json(new ApiResponse(200,req.user,"Verified User"));
 }
+
+
+export const userLogout=asyncHandler(async(req,res)=>{
+  const {_id}=req.user;
+
+  const user=await User.findByIdAndUpdate(_id,{
+    refreshToken:undefined
+  }).select("-password -refreshToken");
+
+  res.status(200).clearCookie("refreshToken",options).clearCookie("accessToken",options).json(new ApiResponse(200,user,"Logout Successfull"));
+})

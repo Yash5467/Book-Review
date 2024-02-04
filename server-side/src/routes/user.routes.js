@@ -2,7 +2,7 @@
 import { Router } from "express";
 
 // Importing user authentication controller functions
-import { userLogin, userSignup, userVerifyLogin } from "../controllers/user.controller.js";
+import { userLogin, userLogout, userSignup, userVerifyLogin } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middilewares/verifyJWT.middileware.js";
 
 // Creating a new instance of the Router
@@ -16,3 +16,6 @@ userRouter.route("/login").post(userLogin);
 
 // Route to handle user verification , using the userVerify controller function 
 userRouter.route("/verify").get(verifyJWT, userVerifyLogin);
+
+// Route to handle user Logout , using the userLogout controller function
+userRouter.route("/logout").get(verifyJWT,userLogout);
