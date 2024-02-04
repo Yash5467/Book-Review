@@ -15,7 +15,8 @@ dotenv.config();
 
 // Setting up Cross-Origin Resource Sharing (CORS) middleware
 app.use(cors({
-    origin: process.env.CLIENT_ENDPOINT // Allowing requests from the specified client endpoint
+    origin: process.env.CLIENT_ENDPOINT,
+    credentials:true // Allowing requests from the specified client endpoint
 }));
 
 // Using cookie-parser middleware to handle cookies in the request
