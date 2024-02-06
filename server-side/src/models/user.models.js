@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 // Creating a user schema with required fields
-const userSchema = mongoose.Schema({
+const userSchema =new mongoose.Schema({
     fullName: {
         type: String,
         required: true,

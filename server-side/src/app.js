@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 
 // Importing user router from the routes directory
 import { userRouter } from './routes/user.routes.js';
+import { contentRouter } from './routes/content.routes.js';
 
 // Creating an instance of the Express application
 const app = express();
@@ -28,6 +29,9 @@ app.use(express.json());
 
 // Mounting the user router under the "/user" endpoint
 app.use("/user", userRouter);
+
+// Mouting the content router under the "/content" endpoint
+app.use("/content",contentRouter);
 
 // Exporting the configured Express application
 export {
