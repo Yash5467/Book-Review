@@ -5,7 +5,8 @@ import {ApiResponse} from '../utils/ApiResponse.js'
 // Importing the necessary modules and dependencies
 const options={
   httpOnly:true,
-  secure:true
+  secure:true,
+  sameSite:'None'
 }
 // Cookie Options 
 
